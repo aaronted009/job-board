@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreCompanyRequest;
 use App\Http\Requests\UpdateCompanyRequest;
 use App\Models\Company;
+use App\Http\Resources\CompanyResource;
 
 class CompanyController extends Controller
 {
@@ -13,7 +14,11 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        //
+        $companies = Company::all();
+        if($companies->isEmpty()) {
+            return response()->json(['message' => 'No companies found'], 200);
+        }
+        return CompanyResource::collection($companies);
     }
 
     /**
