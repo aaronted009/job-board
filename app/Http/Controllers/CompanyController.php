@@ -34,7 +34,9 @@ class CompanyController extends Controller
      */
     public function store(StoreCompanyRequest $request)
     {
-        //
+        $validated = $request->validated();
+        $company = Company::create($validated);
+        return new CompanyResource($company);
     }
 
     /**
