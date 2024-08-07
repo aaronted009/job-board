@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
+use App\Http\Resources\UserResource;
 
 class UserController extends Controller
 {
@@ -13,7 +14,11 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::all();
+        if ($users->isEmpty()) {
+            return response()->json(['message' => 'No users found'], 200);
+        }
+        return UserResource::collection($users);
     }
 
     /**
