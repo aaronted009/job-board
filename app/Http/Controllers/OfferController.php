@@ -60,7 +60,9 @@ class OfferController extends Controller
      */
     public function update(UpdateOfferRequest $request, Offer $offer)
     {
-        //
+        $validated = $request->validated();
+        $offer->update($validated);
+        return new OfferResource($offer);
     }
 
     /**
