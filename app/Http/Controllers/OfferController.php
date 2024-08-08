@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreOfferRequest;
 use App\Http\Requests\UpdateOfferRequest;
 use App\Models\Offer;
+use App\Http\Resources\OfferResource;
 
 class OfferController extends Controller
 {
@@ -13,7 +14,11 @@ class OfferController extends Controller
      */
     public function index()
     {
-        //
+        $offers = Offer::all();
+        if ($offers->isEmpty()) {
+            return response()->json(['message' => 'No offers found'], 200);
+        }
+        return OfferResource::collection($offers);
     }
 
     /**
