@@ -70,6 +70,7 @@ class OfferController extends Controller
      */
     public function destroy(Offer $offer)
     {
-        //
+        $offer->delete();
+        return response()->json(['message' => 'Offer deleted'], 200);
     }
 }
