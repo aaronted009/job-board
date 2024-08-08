@@ -11,7 +11,7 @@ class UpdateOfferRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,10 @@ class UpdateOfferRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'title' => 'string|max:255',
+            'description' => 'string',
+            'company_id' => 'integer|exists:companies,id',
+            'salary' => 'integer',
         ];
     }
 }

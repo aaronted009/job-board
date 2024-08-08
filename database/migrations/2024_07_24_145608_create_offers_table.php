@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('offers', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('company_id')->constrained()->onDelete('cascade');
+            $table->string('title');
+            $table->text('description');
+            $table->integer('salary');
             $table->timestamps();
         });
     }
