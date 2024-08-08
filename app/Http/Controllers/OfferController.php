@@ -34,7 +34,9 @@ class OfferController extends Controller
      */
     public function store(StoreOfferRequest $request)
     {
-        //
+        $validated = $request->validated();
+        $offer = Offer::create($validated);
+        return new OfferResource($offer);
     }
 
     /**
