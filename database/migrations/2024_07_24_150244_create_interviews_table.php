@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('interviews', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('company_id')->constrained();
+            $table->foreignId('offer_id')->constrained();
+            $table->foreignId('employee_id')->constrained();
+            $table->date('date');
+            $table->text('notes')->nullable();
             $table->timestamps();
         });
     }
