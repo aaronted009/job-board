@@ -70,6 +70,7 @@ class InterviewController extends Controller
      */
     public function destroy(Interview $interview)
     {
-        //
+        $interview->delete();
+        return response()->json(['message' => 'Interview deleted'], 200);
     }
 }
