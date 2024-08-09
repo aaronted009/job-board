@@ -34,7 +34,9 @@ class InterviewController extends Controller
      */
     public function store(StoreInterviewRequest $request)
     {
-        //
+        $validated = $request->validated();
+        $interview = Interview::create($validated);
+        return new InterviewResource($interview);
     }
 
     /**
