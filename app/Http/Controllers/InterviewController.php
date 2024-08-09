@@ -60,7 +60,9 @@ class InterviewController extends Controller
      */
     public function update(UpdateInterviewRequest $request, Interview $interview)
     {
-        //
+        $validated = $request->validated();
+        $interview->update($validated);
+        return new InterviewResource($interview);
     }
 
     /**
