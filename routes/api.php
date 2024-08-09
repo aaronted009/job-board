@@ -5,9 +5,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\InterviewController;
+use App\Http\Controllers\OfferController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-Route::apiResources(['companies' => CompanyController::class, 'users' => UserController::class, 'interviews' => InterviewController::class]);
+Route::apiResources(['companies' => CompanyController::class, 'users' => UserController::class, 'offers' => OfferController::class, 'interviews' => InterviewController::class]);
