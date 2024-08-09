@@ -11,7 +11,7 @@ class StoreInterviewRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,11 @@ class StoreInterviewRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'company_id' => ['required', 'integer', 'exists:companies,id'],
+            'offer_id' => ['required', 'integer', 'exists:offers,id'],
+            'employee_id' => ['required', 'integer', 'exists:employees,id'],
+            'date' => ['required', 'date'],
+            'notes' => ['nullable', 'string'],
         ];
     }
 }

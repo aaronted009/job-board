@@ -11,7 +11,7 @@ class UpdateInterviewRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,11 @@ class UpdateInterviewRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'company_id' => ['integer', 'exists:companies,id'],
+            'offer_id' => ['integer', 'exists:offers,id'],
+            'employee_id' => ['integer', 'exists:employees,id'],
+            'date' => ['date'],
+            'notes' => ['string'],
         ];
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreInterviewRequest;
 use App\Http\Requests\UpdateInterviewRequest;
 use App\Models\Interview;
+use App\Http\Resources\InterviewResource;
 
 class InterviewController extends Controller
 {
@@ -13,7 +14,11 @@ class InterviewController extends Controller
      */
     public function index()
     {
-        //
+        $interviews = Interview::all();
+        if ($interviews->isEmpty()) {
+            return response()->json(['message' => 'No interviews found'], 404);
+        }
+        return InterviewResource::collection($interviews);
     }
 
     /**
@@ -29,7 +34,9 @@ class InterviewController extends Controller
      */
     public function store(StoreInterviewRequest $request)
     {
-        //
+        $validated = $request->validated();
+        $interview = Interview::create($validated);
+        return new InterviewResource($interview);
     }
 
     /**
@@ -37,7 +44,7 @@ class InterviewController extends Controller
      */
     public function show(Interview $interview)
     {
-        //
+        return new InterviewResource($interview);
     }
 
     /**
@@ -53,7 +60,9 @@ class InterviewController extends Controller
      */
     public function update(UpdateInterviewRequest $request, Interview $interview)
     {
-        //
+        $validated = $request->validated();
+        $interview->update($validated);
+        return new InterviewResource($interview);
     }
 
     /**
@@ -61,6 +70,7 @@ class InterviewController extends Controller
      */
     public function destroy(Interview $interview)
     {
-        //
+        $interview->delete();
+        return response()->json(['message' => 'Interview deleted'], 200);
     }
 }
