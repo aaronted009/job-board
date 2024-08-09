@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreInterviewRequest;
 use App\Http\Requests\UpdateInterviewRequest;
 use App\Models\Interview;
+use App\Http\Resources\InterviewResource;
 
 class InterviewController extends Controller
 {
@@ -13,7 +14,11 @@ class InterviewController extends Controller
      */
     public function index()
     {
-        //
+        $interviews = Interview::all();
+        if ($interviews->isEmpty()) {
+            return response()->json(['message' => 'No interviews found'], 404);
+        }
+        return InterviewResource::collection($interviews);
     }
 
     /**
