@@ -44,7 +44,7 @@ class InterviewController extends Controller
      */
     public function show(Interview $interview)
     {
-        //
+        return new InterviewResource($interview);
     }
 
     /**
