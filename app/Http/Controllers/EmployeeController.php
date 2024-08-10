@@ -60,7 +60,9 @@ class EmployeeController extends Controller
      */
     public function update(UpdateEmployeeRequest $request, Employee $employee)
     {
-        //
+        $validated = $request->validated();
+        $employee->update($validated);
+        return new EmployeeResource($employee);
     }
 
     /**
