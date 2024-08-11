@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreEmployeeRequest;
 use App\Http\Requests\UpdateEmployeeRequest;
 use App\Models\Employee;
+use App\Http\Resources\EmployeeResource;
 
 class EmployeeController extends Controller
 {
@@ -13,7 +14,11 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        //
+        $employees = Employee::all();
+        if ($employees->isEmpty()) {
+            return response()->json(['message' => 'No employees found'], 404);
+        }
+        return EmployeeResource::collection($employees);
     }
 
     /**
@@ -29,7 +34,9 @@ class EmployeeController extends Controller
      */
     public function store(StoreEmployeeRequest $request)
     {
-        //
+        $validated = $request->validated();
+        $employee = Employee::create($validated);
+        return new EmployeeResource($employee);
     }
 
     /**
@@ -37,7 +44,7 @@ class EmployeeController extends Controller
      */
     public function show(Employee $employee)
     {
-        //
+        return new EmployeeResource($employee);
     }
 
     /**
@@ -53,7 +60,9 @@ class EmployeeController extends Controller
      */
     public function update(UpdateEmployeeRequest $request, Employee $employee)
     {
-        //
+        $validated = $request->validated();
+        $employee->update($validated);
+        return new EmployeeResource($employee);
     }
 
     /**
@@ -61,6 +70,7 @@ class EmployeeController extends Controller
      */
     public function destroy(Employee $employee)
     {
-        //
+        $employee->delete();
+        return response()->json(['message' => 'Employee deleted successfully']);
     }
 }
