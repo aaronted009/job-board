@@ -1,4 +1,4 @@
 <div id="homepage">
     {{-- Do your work, then step back. --}}
-    <button><a href="{{ route('register') }}">Commencer</a></button>
+    <a class="btn btn-light" href="{{ route('register') }}">Commencer</a>
 </div>
