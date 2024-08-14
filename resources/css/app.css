@@ -1,0 +1,11 @@
+body {
+    background: linear-gradient(to bottom, #4e54c8, #8f94fb);
+    height: 100vh;
+}
+
+#homepage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
