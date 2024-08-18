@@ -7,6 +7,7 @@ use App\Livewire\Register\RegisterCompany;
 use App\Livewire\Register\RegisterUser;
 use App\Livewire\Login;
 use App\Livewire\Dashboard\DashboardCompany;
+use App\Livewire\Dashboard\DashboardUser;
 
 Route::get('/', Home::class)->name('home');
 
@@ -19,3 +20,5 @@ Route::get('/register/user', RegisterUser::class)->name('register.user');
 Route::get('/login', Login::class)->name('login');
 
 Route::get('/company/{id}/dashboard', DashboardCompany::class)->name('dashboard.company');
+
+Route::get('/user/{id}/dashboard', DashboardUser::class)->name('dashboard.user');
