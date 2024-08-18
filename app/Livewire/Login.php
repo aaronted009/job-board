@@ -39,7 +39,7 @@ class Login extends Component
             return redirect()->route('home');
         } else if ($company) {
             session()->flash('success', 'Vous êtes connecté.');
-            return redirect()->route('home');
+            return redirect()->route('dashboard.company', ['id' => $company->id]);
         } else {
             session()->flash('error', 'Email ou mot de passe incorrect.');
             return redirect()->route('login');
