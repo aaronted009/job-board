@@ -36,10 +36,10 @@ class Login extends Component
 
         if ($user and Hash::check($this->password, $user->password)) {
             session()->flash('success', 'Vous êtes connecté.');
-            return redirect()->route('home');
+            return redirect()->route('dashboard.user', ['id' => $user->id]);
         } else if ($company) {
             session()->flash('success', 'Vous êtes connecté.');
-            return redirect()->route('home');
+            return redirect()->route('dashboard.company', ['id' => $company->id]);
         } else {
             session()->flash('error', 'Email ou mot de passe incorrect.');
             return redirect()->route('login');
