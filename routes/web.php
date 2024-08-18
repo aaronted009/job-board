@@ -18,4 +18,4 @@ Route::get('/register/user', RegisterUser::class)->name('register.user');
 
 Route::get('/login', Login::class)->name('login');
 
-Route::get('/dashboard-company', DashboardCompany::class)->name('dashboard.company');
+Route::get('/dashboard-company/{id}', DashboardCompany::class)->name('dashboard.company');
