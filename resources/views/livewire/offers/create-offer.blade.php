@@ -9,7 +9,7 @@
                     </div>
                     <hr>
                     <div class="form-group">
-                        <input type="hidden" name="company_id" value="">
+                        <input type="hidden" name="company_id" value="{{$company->id}}">
                     </div>
                     <div class="form-group">
                         <label for="name">Titre</label>
