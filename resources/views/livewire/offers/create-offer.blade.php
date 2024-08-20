@@ -21,7 +21,7 @@
                     </div>
                     <div class="form-group mt-2">
                         <label for="salary">Salaire</label>
-                        <input type="text" class="form-control" id="salary" name="salary">
+                        <input type="number" class="form-control" id="salary" name="salary">
                     </div>
                     <button type="submit" class="btn btn-secondary mt-3">Soumettre</button>
                 </form>
