@@ -4,6 +4,7 @@ namespace App\Livewire\Offers;
 
 use Livewire\Component;
 use App\Models\Company;
+use Livewire\Attributes\Title;
 
 class CreateOffer extends Component
 {
@@ -14,6 +15,7 @@ class CreateOffer extends Component
         $this->company = Company::findOrFail($id);
     }
 
+    #[Title('Créer une offre')] 
     public function render()
     {
         return view('livewire.offers.create-offer');
