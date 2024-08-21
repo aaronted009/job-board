@@ -3,6 +3,7 @@
 namespace App\Livewire\Offers;
 
 use Livewire\Component;
+use Livewire\Attributes\Title;
 use App\Models\Company;
 use App\Models\Offer;
 
@@ -15,6 +16,7 @@ class ShowCompanyOffers extends Component
         $this->company = Company::findOrFail($id);
     }
 
+    #[Title('Mes offres')] 
     public function render()
     {
         $companyOffers = Offer::where('company_id', $this->company->id)->get();
