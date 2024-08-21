@@ -9,6 +9,7 @@ use App\Livewire\Login;
 use App\Livewire\Dashboard\DashboardCompany;
 use App\Livewire\Dashboard\DashboardUser;
 use App\Livewire\Offers\CreateOffer;
+use App\Livewire\Offers\ShowCompanyOffers;
 
 Route::get('/', Home::class)->name('home');
 
@@ -25,3 +26,5 @@ Route::get('/company/{id}/dashboard', DashboardCompany::class)->name('dashboard.
 Route::get('/user/{id}/dashboard', DashboardUser::class)->name('dashboard.user');
 
 Route::get('/company/{id}/offers/create', CreateOffer::class)->name('offers.create');
+
+Route::get('/company/{id}/offers', ShowCompanyOffers::class)->name('offers.show-company-offers');
