@@ -4,7 +4,7 @@
         <div class="card-body">
             <div class="d-flex flex-column align-items-center">
                 <a href="{{ route('offers.create', ['id' => $company]) }}" class="btn btn-primary mb-3">Créer une offre</a>
-                <a href="#" class="btn btn-secondary mb-3">Voir mes offres</a>
+                <a href="{{ route('offers.show-company-offers', ['id' => $company]) }}" class="btn btn-secondary mb-3">Voir mes offres</a>
             </div>
         </div>
     </div>
