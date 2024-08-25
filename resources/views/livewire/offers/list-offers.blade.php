@@ -19,6 +19,7 @@
                             <h2>{{ $offer->title }}</h2>
                             <p>{{ $offer->description }}</p>
                             <p>Salary: {{ $offer->salary }}</p>
+                            <a href="#" class="btn btn-success">Apply</a>
                         </div>
                     </div>
                 </div>
