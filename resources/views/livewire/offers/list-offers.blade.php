@@ -19,7 +19,13 @@
                             <h2>{{ $offer->title }}</h2>
                             <p>{{ $offer->description }}</p>
                             <p>Salary: {{ $offer->salary }}</p>
-                            <a href="#" class="btn btn-success">Apply</a>
+                            @auth
+                                <form wire:submit="apply">
+                                    <input type="hidden" wire:model="offer_id" value="{{ $offer->id }}">
+                                    <input type="hidden" wire:model="user_id" value="{{ auth()->user()->id }}">
+                                    <button type="submit" class="btn btn-success">Apply</button>
+                                </form>
+                            @endauth
                         </div>
                     </div>
                 </div>

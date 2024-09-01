@@ -10,4 +10,8 @@ class ApplyToOffer extends Component
     {
         return view('livewire.apply-to-offer');
     }
+
+    public apply(){
+        
+    }
 }
