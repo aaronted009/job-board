@@ -20,11 +20,16 @@
                             <p>{{ $offer->description }}</p>
                             <p>Salary: {{ $offer->salary }}</p>
                             @auth
-                                <form wire:submit="apply">
-                                    <input type="hidden" wire:model="offer_id" value="{{ $offer->id }}">
-                                    <input type="hidden" wire:model="user_id" value="{{ auth()->user()->id }}">
-                                    <button type="submit" class="btn btn-success">Apply</button>
-                                </form>
+                                @if ($applications->contains('offer_id', $offer->id) && $applications->contains('user_id', auth()->user()->id))
+                                    <button class="btn btn-secondary" disabled>Already applied</button> 
+                                    
+                                @else
+                                    <form action="{{ route('applications.store') }}" method="POST">
+                                        <input type="hidden" wire:model="offer_id" value="{{ $offer->id }}">
+                                        <input type="hidden" wire:model="user_id" value="{{ auth()->user()->id }}">
+                                        <button type="submit" class="btn btn-success">Apply</button>
+                                    </form>                                    
+                                @endif
                             @endauth
                         </div>
                     </div>
