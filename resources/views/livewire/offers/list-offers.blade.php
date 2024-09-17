@@ -20,7 +20,7 @@
                             <p>{{ $offer->description }}</p>
                             <p>Salary: {{ $offer->salary }}</p>
                             @auth
-                                <form wire:submit="apply">
+                                <form action="{{ route('applications.store') }}" method="POST">
                                     <input type="hidden" wire:model="offer_id" value="{{ $offer->id }}">
                                     <input type="hidden" wire:model="user_id" value="{{ auth()->user()->id }}">
                                     <button type="submit" class="btn btn-success">Apply</button>
